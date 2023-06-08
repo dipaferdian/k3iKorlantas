@@ -24,6 +24,14 @@ Cypress.Commands.add('loginSession', () => {
     return false
   })
 })
+
+Cypress.Commands.add('filterPetugas', () => {
+
+  cy.get('.dropdown-item').then((element) => {
+    cy.contains('Filter Personil Per Polda').click({ force: true })
+  })
+
+})
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //

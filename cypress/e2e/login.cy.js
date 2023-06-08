@@ -7,6 +7,7 @@ describe('Login', () => {
 
     // Visit the login page
     cy.visit(`${Cypress.env('BASE_URL')}/login`);
+    cy.wait(3000)
 
     console.log(`${Cypress.env('BASE_URL')}/login`)
 
@@ -18,22 +19,18 @@ describe('Login', () => {
 
   })
 
-  it.skip('should create a login with username and password', () => {
+  it('should create a login with username and password', () => {
 
     // Fill in the username field
-    cy.get('input[name="username"]').type(Cypress.env('USERNAME'));
+    cy.get('input[name="username"]').type(Cypress.env('ACCOUNT'));
 
     // Fill in the password field
     cy.get('input[name="password"]').type(Cypress.env('PASSWORD'));
 
     // Submit the form
     cy.get('button[type="submit"]').click();
-
-    // cy.getCookie('ci_session').then((cookie) => {
-    //   // save cookie until we need it
-
-    //   cy.setCookie(cookie.name, cookie.value)
-    // })
+    cy.wait(5000);
 
   });
+
 });
