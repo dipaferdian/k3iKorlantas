@@ -16,7 +16,7 @@ Cypress.Commands.add('loginSession', () => {
   cy.setCookie(Cypress.env('SESSION_NAME'), Cypress.env('SESSION_VALUE'))
 
   cy.visit(`${Cypress.env('BASE_URL')}/dashboard`);
-  cy.wait(3000)
+  cy.wait(0)
 
   Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from

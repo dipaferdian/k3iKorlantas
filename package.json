@@ -3,9 +3,7 @@
     "test": "cypress open"
   },
   "devDependencies": {
-    "cypress": "^12.12.0",
-    "http-server": "^14.1.1",
-    "start-server-and-test": "^2.0.0"
+    "cypress": "^12.12.0"
   },
   "dependencies": {
     "cypress-real-events": "^1.8.1",

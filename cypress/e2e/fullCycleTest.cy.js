@@ -7,6 +7,7 @@ class fullCycleTest {
 
     stepPetugas.call()
     stepPolda.call()
+    stepPolda.call()
   }
 }
 
