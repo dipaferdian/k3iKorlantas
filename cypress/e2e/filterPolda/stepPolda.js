@@ -13,6 +13,27 @@ class stepPolda {
     })
   }
 
+  static searchPolres() {
+    cy.get('input[type="search"]').type("testing");
+  }
+
+  static zoomSpecificPolda() {
+
+    cy.get('.modal-body').contains('Korlantas').click()
+
+    cy.window().then((window) => {
+
+      const element = window.document.querySelector("#flyToMapFilterPolda1")
+      element.click()
+    })
+
+    cy.wait(5000)
+    cy.get('.leaflet-proxy.leaflet-zoom-animated').should((element) => {
+      expect(element[0].attributes[1].nodeValue).to.eq('transform: translate3d(5.34738e+07px, 3.47209e+07px, 0px) scale(131072);');
+    });
+
+  }
+
   static call() {
 
     describe('Verify filter polda', () => {
@@ -23,25 +44,11 @@ class stepPolda {
         cy.url().should('include', '/dashboard')
       })
 
-      it.skip('uncheck and check filter', () => {
-        this.filterPolda()
-      })
-
-      it('show polres by using dropdown', () => {
+      it('feature polda', () => {
 
         this.filterPolda()
-        cy.get('.modal-body').contains('Korlantas').click()
-
-        cy.window().then((window) => {
-
-          const element = window.document.querySelector("#flyToMapFilterPolda1")
-          element.click()
-        })
-
-        cy.wait(5000)
-          cy.get('.leaflet-proxy.leaflet-zoom-animated').should((element) => {
-            expect(element[0].attributes[1].nodeValue).to.eq('transform: translate3d(5.34738e+07px, 3.47209e+07px, 0px) scale(131072);');
-          });
+        this.zoomSpecificPolda()
+        this.searchPolres()
       })
 
     })
